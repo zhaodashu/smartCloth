@@ -24,4 +24,11 @@ public class HistoryDataController {
     JSONObject getHistoryData(@RequestBody JSONObject param){
         return historyDataService.getHistoryData(param);
     }
+
+
+    @PostMapping("/allForManager")//返回给管理员所有人员最新状态
+    JSONObject getAllHistoryDataForManager(){
+        return historyDataService.getAllHistoryDataForManager();
+    }
+
 }

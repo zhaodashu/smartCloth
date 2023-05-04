@@ -3,6 +3,7 @@ package com.smartCloth.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.smartCloth.model.HistoryDataModel;
+import com.smartCloth.model.IntelligenceModel;
 import com.smartCloth.model.UserModel;
 import com.smartCloth.repository.HistoryDataRepository;
 import com.smartCloth.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -125,6 +127,21 @@ public class HistoryDataServiceImpl implements HistoryDataService {
         }
         res.put("errorCode", 200);
         res.put("errorMsg", "获取当天平均值信息成功");
+        return res;
+    }
+//发送给管理员的全部的人员生理数据
+    @Override
+    public JSONObject getAllHistoryDataForManager() {
+
+
+        List<HistoryDataModel> list = historyDataRepository.getAllHistoryDataForManager();
+
+        JSONObject res = new JSONObject();
+
+        res.put("list", list);
+        res.put("errorCode", 200);
+        res.put("errorMsg", "获取列表成功");
+
         return res;
     }
 }

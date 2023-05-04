@@ -8,6 +8,7 @@ import com.smartCloth.repository.UserRepository;
 import com.smartCloth.service.UserService;
 import com.smartCloth.util.WechatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

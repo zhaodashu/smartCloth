@@ -1,6 +1,9 @@
 package com.smartCloth.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.smartCloth.model.UserModel;
+
+import java.util.List;
 
 public interface UserService {
 

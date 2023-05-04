@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface HistoryDataRepository extends JpaRepository<HistoryDataModel, Long> {
@@ -24,5 +25,8 @@ public interface HistoryDataRepository extends JpaRepository<HistoryDataModel, L
 
     @Query(nativeQuery = true, value = "SELECT ROUND(AVG(hd.heartrate),2) from history_data hd where hd.openid = ?1 and hd.date = ?2 and hd.heartrate > 0 and hd.heartrate<255")
     Object getAverageHeartRate(String openId, Date date);
+
+    @Query(nativeQuery = true, value = "SELECT a.* FROM history_data AS a, (SELECT openid, max(date) AS recent_date FROM history_data GROUP BY openid) AS b WHERE a.openid=b.openid AND a.date=b.recent_time" )
+    List<HistoryDataModel> getAllHistoryDataForManager();
 
 }
