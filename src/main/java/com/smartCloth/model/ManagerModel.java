@@ -6,7 +6,7 @@ import javax.persistence.*;
  * 管理员信息
  * @author dmx
  */
-
+///
 @Entity
 @Data
 @Table(name = "manager")
